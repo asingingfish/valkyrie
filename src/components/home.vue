@@ -1,6 +1,8 @@
 <template>
     <div class="container">
-
+        <div class="header">
+            <h1>数据分析</h1>
+        </div>
     </div>
 </template>
 
@@ -33,5 +35,16 @@
 
 
 <style lang="scss">
+    $base-gap: 20px;
 
+    .container {
+        margin: 0;
+        padding: $base-gap;
+    }
+
+    .header {
+        h1 {
+            margin: 0;
+        }
+    }
 </style>
