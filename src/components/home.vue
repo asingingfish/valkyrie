@@ -10,19 +10,19 @@
                 <el-table-column prop="location" label="位置" width="220"></el-table-column>
                 <el-table-column prop="feature" label="特点" width="300">
                     <template slot-scope="scope">
-                        <el-tag v-for="feature in scope.row.feature" :type="'success'"
+                        <el-tag v-for="feature in scope.row.feature" :type="''"
                                 disable-transitions>{{feature}}
                         </el-tag>
                     </template>
                 </el-table-column>
                 <el-table-column prop="bug" label="缺点" width="300">
                     <template slot-scope="scope">
-                        <el-tag v-for="bug in scope.row.bug" :type="'danger'"
+                        <el-tag v-for="bug in scope.row.bug" :type="'info'"
                                 disable-transitions>{{bug}}
                         </el-tag>
                     </template>
                 </el-table-column>
-                <el-table-column prop="rate" label="缺点" width="180">
+                <el-table-column prop="rate" label="星级" width="180">
                     <template slot-scope="scope">
                         <el-rate
                             :value="scope.row.rate"
@@ -85,9 +85,11 @@
     }
 
     .el-tag {
+        margin-right: 10px;
         margin-bottom: 5px;
-        & + .el-tag {
-            margin-left: $base-gap / 2;
+
+        &:last-child {
+            margin-right: 0;
         }
     }
 </style>
