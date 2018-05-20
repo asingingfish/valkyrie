@@ -33,6 +33,11 @@
                         </el-rate>
                     </template>
                 </el-table-column>
+                <el-table-column prop="link" label="链接" width="80">
+                    <template slot-scope="scope">
+                        <a :href="scope.row.link" v-if="scope.row.link">查看</a>
+                    </template>
+                </el-table-column>
             </el-table>
         </el-main>
     </el-container>
