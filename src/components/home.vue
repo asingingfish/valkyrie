@@ -1,12 +1,46 @@
 <template>
-    <div class="container">
-        <div class="header">
-            <h1>数据分析</h1>
-        </div>
-    </div>
+    <el-container>
+        <el-header>
+            <h1>租房数据分析</h1>
+        </el-header>
+        <el-main>
+            <el-table :data="rent">
+                <el-table-column prop="village" label="小区" width="100"></el-table-column>
+                <el-table-column prop="rental" label="租金" width="100"></el-table-column>
+                <el-table-column prop="location" label="位置" width="220"></el-table-column>
+                <el-table-column prop="feature" label="特点" width="300">
+                    <template slot-scope="scope">
+                        <el-tag v-for="feature in scope.row.feature" :type="'success'"
+                                disable-transitions>{{feature}}
+                        </el-tag>
+                    </template>
+                </el-table-column>
+                <el-table-column prop="bug" label="缺点" width="300">
+                    <template slot-scope="scope">
+                        <el-tag v-for="bug in scope.row.bug" :type="'danger'"
+                                disable-transitions>{{bug}}
+                        </el-tag>
+                    </template>
+                </el-table-column>
+                <el-table-column prop="rate" label="缺点" width="180">
+                    <template slot-scope="scope">
+                        <el-rate
+                            :value="scope.row.rate"
+                            disabled
+                            show-text
+                            text-color="#ff9900"
+                            :texts="['极差', '失望', '一般', '满意', '惊喜']">
+                        </el-rate>
+                    </template>
+                </el-table-column>
+            </el-table>
+        </el-main>
+    </el-container>
 </template>
 
 <script>
+    import rent from "@/data/rent";
+
     export default {
         name: "Home",
         componentName: "Home",
@@ -16,7 +50,9 @@
         props: {},
 
         data() {
-            return {};
+            return {
+                rent
+            };
         },
 
         computed: {},
@@ -45,6 +81,13 @@
     .header {
         h1 {
             margin: 0;
+        }
+    }
+
+    .el-tag {
+        margin-bottom: 5px;
+        & + .el-tag {
+            margin-left: $base-gap / 2;
         }
     }
 </style>
